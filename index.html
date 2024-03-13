@@ -39,12 +39,14 @@
             margin: 0;
             text-align: center;
             color: gray;
+            overflow: hidden; /* Hide overflow content */
         }
 
         h1 {
             animation: bubbling 1.5s infinite;
         }
-                h2 {
+
+        h2 {
             animation: bubbling 2s 1;
         }
 
@@ -65,6 +67,16 @@
             font-style: italic;
             color: gray;
             text-align: left;
+        }
+
+        #siez {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999; /* Ensure it's above other content */
+            display: none;
         }
     </style>
 </head>
@@ -130,11 +142,27 @@
         </ul>
     </div>
 
-    <div class="disclaimer">
-        <p>I don't condone the use of any of this,</p>
-        <p>and I'm not responsible for the use of any of this content. This content is here so schools can help get rid of sites like these.</p>
-    </div>
+<div class="disclaimer">
+    <p>I don't condone the use of any of this,</p>
+    <p>and I'm not responsible for the use of any of this content. This content is here so schools can help get rid of sites like these.</p>
+</div>
+
+<script>
+    // Define a variable to keep track of the key presses
+    let keyPresses = '';
+
+    // Add an event listener to the document to capture key presses
+    document.addEventListener('keydown', function(event) {
+        // Append the pressed key to the keyPresses variable
+        keyPresses += event.key;
+        
+        // Check if the keyPresses variable matches the sequence 'hhh1'
+        if (keyPresses === 'hhh1') {
+            // If it matches, hide the image
+            document.getElementById('siez').style.display = 'none';
+        }
+    });
+</script>
 <body class="light-mode" id="body">
-    </script>
 </body>
 </html>
